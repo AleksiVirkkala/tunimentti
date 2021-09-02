@@ -1,3 +1,4 @@
+import './initFirebase'
 import { createApp } from 'vue'
 import App from './App.vue'
 

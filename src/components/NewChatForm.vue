@@ -3,7 +3,7 @@
     <textarea
       v-model="message"
       :disabled="!isLoggedIn"
-      :placeholder="isLoggedIn ? 'Kirjoita tarjouksesi ja paina enteriä...' : 'Kirjaudu sisään jättääksesi tarjouksia'"
+      :placeholder="isLoggedIn ? 'Kirjoita tarjouksesi ja paina enteriä... ja pysytääs asiallisina jookos:)' : 'Kirjaudu sisään jättääksesi tarjouksia'"
       @keypress.enter.prevent="handleSubmit"
     />
     <div class="error">{{ error }}</div>

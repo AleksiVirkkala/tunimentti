@@ -1,7 +1,6 @@
 <template>
   <form @submit.prevent="handleSubmit">
     <input v-model="displayName" type="text" required placeholder="chatti nimi">
-    <input v-model="email" type="email" required placeholder="sähköposti">
     <input v-model="password" type="password" required placeholder="salasana">
     <div class="error">{{ error }}</div>
     <button>Rekisteröidy</button>
@@ -22,11 +21,10 @@ export default defineComponent({
 
     // refs
     const displayName = ref('')
-    const email = ref('')
     const password = ref('')
 
     const handleSubmit = async () => {
-      await signup(email.value, password.value, displayName.value)
+      await signup(`${displayName.value}@gmail.com`, password.value, displayName.value)
       if (!error.value) {
         context.emit('signup')
       }
@@ -36,7 +34,7 @@ export default defineComponent({
       router.push({ name: 'Auction' })
     }
 
-    return { displayName, email, password, handleSubmit, error, goToAuction }
+    return { displayName, password, handleSubmit, error, goToAuction }
   },
 })
 </script>

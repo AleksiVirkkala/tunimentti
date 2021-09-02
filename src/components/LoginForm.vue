@@ -1,6 +1,6 @@
 <template>
   <form @submit.prevent="handleSubmit">
-    <input v-model="email" type="email" required placeholder="sähköposti">
+    <input v-model="email" required placeholder="Chatti nimi">
     <input v-model="password" type="password" required placeholder="salasana">
     <div class="error">{{ error }}</div>
     <button>Kirjaudu</button>
@@ -25,7 +25,7 @@ export default defineComponent({
     const { error, login } = useLogin()
 
     const handleSubmit = async () => {
-      await login(email.value, password.value)
+      await login(`${email.value}@gmail.com`, password.value)
       if (!error.value) {
         context.emit('login')
       }

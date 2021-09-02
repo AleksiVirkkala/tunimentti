@@ -4,7 +4,14 @@
       <p>Moi {{ user.displayName }}!</p>
       <p class="email">Alla näet tarjoukset livenä</p>
     </div>
-    <button @click="handleClick">Logout</button>
+    <button @click="logOut">Kirjaudu ulos</button>
+  </nav>
+  <nav v-else>
+    <div>
+      <p>Moi anonyymi!</p>
+      <p class="email">Alla näet tarjoukset livenä</p>
+    </div>
+    <button @click="goToLogin">Kirjaudu sisään</button>
   </nav>
 </template>
 
@@ -12,22 +19,27 @@
 import { defineComponent } from 'vue'
 import useLogout from '@/composables/useLogout'
 import getUser from '@/composables/getUser'
+import { useRouter } from 'vue-router'
 
 export default defineComponent({
   name: 'Navbar',
   setup() {
     const { error, logout } = useLogout()
     const { user } = getUser()
+    const router = useRouter()
 
-    const handleClick = async () => {
+    const logOut = async () => {
       await logout()
-
       if (!error.value) {
         console.log('User logged out')
       }
     }
 
-    return { handleClick, user }
+    const goToLogin = async () => {
+      router.push({ name: 'Auth' })
+    }
+
+    return { logOut, goToLogin, user }
   },
 })
 </script>

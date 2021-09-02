@@ -7,7 +7,7 @@ import { projectAuth } from '@/firebase/config'
 const requireAuth: NavigationGuard = (to, from, next) => {
   const user = projectAuth.currentUser
   if (!user) {
-    next({ name: 'Welcome' })
+    next({ name: 'Auth' })
   }
   next()
 }
@@ -22,16 +22,18 @@ const requireNoAuth: NavigationGuard = (to, from, next) => {
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: '/',
-    name: 'Welcome',
-    component: Welcome,
-    beforeEnter: requireNoAuth
+    path: '/auth',
+    name: 'Auth',
+    component: Welcome
   },
   {
-    path: '/Auction',
+    path: '/',
+    redirect: '/auction'
+  },
+  {
+    path: '/auction',
     name: 'Auction',
     component: Auction,
-    beforeEnter: requireAuth
   }
 ]
 

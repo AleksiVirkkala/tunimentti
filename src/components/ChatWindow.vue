@@ -30,7 +30,8 @@ export default defineComponent({
     const messages: Ref<any> = ref(null)
 
     onUpdated(() => {
-      messages.value.scrollTop = messages.value.scrollHeight
+      if (messages.value)
+        messages.value.scrollTop = messages.value?.scrollHeight
     })
 
     return { error, documents, formattedDocuments, messages }

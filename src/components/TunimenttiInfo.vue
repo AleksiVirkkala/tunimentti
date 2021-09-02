@@ -25,14 +25,20 @@ export default defineComponent({
   .col {
     padding: 30px 20px;
     display: flex;
-    align-items: center;
     flex-direction: column;
   }
   .description {
     white-space: pre-line;
-    padding-right: 50px;
+    padding-top: 20px;
+  }
+  .image {
+    display: flex;
+    justify-content: center;
   }
   .tunimentti {
+    object-fit: cover;
     height: 350px;
+    width: 100%;
+    max-width: 500px;
   }
 </style>

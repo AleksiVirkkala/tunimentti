@@ -32,7 +32,7 @@ export default defineComponent({
 
     watch(user, newVal => {
       if (newVal === null) {
-        router.push({ name: 'Welcome' })
+        router.push({ name: 'Auction' })
       }
     })
   },

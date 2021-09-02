@@ -1,6 +1,6 @@
 <template>
   <div class="welcome container">
-    <p>Welcome</p>
+    <p>Tervetuloa!</p>
     <div v-if="showLogin">
       <h2>Login</h2>
       <LoginForm @login="enterChat" />
@@ -21,7 +21,7 @@ import LoginForm from '@/components/LoginForm.vue'
 import { useRouter } from 'vue-router'
 
 export default defineComponent({
-  name: 'Welcome',
+  name: 'Auth',
   components: { SignupForm, LoginForm },
 
   setup() {

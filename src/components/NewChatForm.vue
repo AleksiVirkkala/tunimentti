@@ -2,7 +2,8 @@
   <form>
     <textarea
       v-model="message"
-      placeholder="Kirjoita tarjouksesi ja paina enteriä..."
+      :disabled="!isLoggedIn"
+      :placeholder="isLoggedIn ? 'Kirjoita tarjouksesi ja paina enteriä...' : 'Kirjaudu sisään osallistuaksesi tarjouksiin'"
       @keypress.enter.prevent="handleSubmit"
     />
     <div class="error">{{ error }}</div>
@@ -20,6 +21,7 @@ export default defineComponent({
   setup() {
     const message = ref('')
     const { user } = getUser()
+    const isLoggedIn = !!user.value
     const { addDoc, error } = useCollection('messages')
 
     const handleSubmit = async () => {
@@ -35,7 +37,7 @@ export default defineComponent({
     }
 
 
-    return { message, handleSubmit, error }
+    return { message, handleSubmit, error, user, isLoggedIn }
   },
 })
 </script>

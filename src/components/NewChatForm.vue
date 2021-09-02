@@ -14,14 +14,14 @@
 import getUser from '@/composables/getUser'
 import useCollection from '@/composables/useCollection'
 import { timestamp } from '@/firebase/config'
-import { defineComponent, ref } from 'vue'
+import { computed, defineComponent, ref } from 'vue'
 
 export default defineComponent({
   name: 'NewChatForm',
   setup() {
     const message = ref('')
     const { user } = getUser()
-    const isLoggedIn = !!user.value
+    const isLoggedIn = computed(() => !!user.value)
     const { addDoc, error } = useCollection('messages')
 
     const handleSubmit = async () => {

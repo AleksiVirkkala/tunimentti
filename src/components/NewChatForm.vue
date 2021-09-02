@@ -2,7 +2,7 @@
   <form>
     <textarea
       v-model="message"
-      placeholder="Type a message and hit enter to send..."
+      placeholder="Kirjoita tarjouksesi ja paina enteriä..."
       @keypress.enter.prevent="handleSubmit"
     />
     <div class="error">{{ error }}</div>

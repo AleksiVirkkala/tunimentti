@@ -29,7 +29,7 @@ export default defineComponent({
     const router = useRouter()
 
     const enterChat = () => {
-      router.push({ name: 'Chatroom' })
+      router.push({ name: 'Auction' })
     }
 
     return { showLogin, enterChat }

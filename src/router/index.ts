@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw, NavigationGuard } from 'vue-router'
 import Welcome from '@/views/Welcome.vue'
-import Chatroom from '@/views/Chatroom.vue'
+import Auction from '@/views/Auction.vue'
 import { projectAuth } from '@/firebase/config'
 
 // auth guard
@@ -15,7 +15,7 @@ const requireAuth: NavigationGuard = (to, from, next) => {
 const requireNoAuth: NavigationGuard = (to, from, next) => {
   const user = projectAuth.currentUser
   if (user) {
-    next({ name: 'Chatroom' })
+    next({ name: 'Auction' })
   }
   next()
 }
@@ -28,9 +28,9 @@ const routes: Array<RouteRecordRaw> = [
     beforeEnter: requireNoAuth
   },
   {
-    path: '/chatroom',
-    name: 'Chatroom',
-    component: Chatroom,
+    path: '/Auction',
+    name: 'Auction',
+    component: Auction,
     beforeEnter: requireAuth
   }
 ]

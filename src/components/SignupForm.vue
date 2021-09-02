@@ -1,21 +1,24 @@
 <template>
   <form @submit.prevent="handleSubmit">
-    <input v-model="displayName" type="text" required placeholder="display name">
-    <input v-model="email" type="email" required placeholder="email">
-    <input v-model="password" type="password" required placeholder="password">
+    <input v-model="displayName" type="text" required placeholder="chatti nimi">
+    <input v-model="email" type="email" required placeholder="sähköposti">
+    <input v-model="password" type="password" required placeholder="salasana">
     <div class="error">{{ error }}</div>
-    <button>Sign up</button>
+    <button>Rekisteröidy</button>
+    <button class="no-login-button" @click="goToAuction">Jatka anonyyminä</button>
   </form>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 import useSignup from '@/composables/useSignup'
+import { useRouter } from 'vue-router'
 
 export default defineComponent({
   name: 'SignupForm',
   setup(props, context) {
     const { error, signup } = useSignup()
+    const router = useRouter()
 
     // refs
     const displayName = ref('')
@@ -29,9 +32,19 @@ export default defineComponent({
       }
     }
 
-    return { displayName, email, password, handleSubmit, error }
+    const goToAuction = () => {
+      router.push({ name: 'Auction' })
+    }
+
+    return { displayName, email, password, handleSubmit, error, goToAuction }
   },
 })
 </script>
 
-<style></style>
+<style scoped>
+.no-login-button {
+  background: none;
+  color: #5200a3;
+  padding-right: 0;
+}
+</style>

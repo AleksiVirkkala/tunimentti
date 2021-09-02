@@ -1,15 +1,14 @@
 <template>
   <div class="welcome container">
-    <p>Tervetuloa!</p>
     <div v-if="showLogin">
-      <h2>Login</h2>
+      <h2>Kirjaudu sisään</h2>
       <LoginForm @login="enterChat" />
-      <p>No account yet? <span @click="showLogin = false">Signup</span> instead</p>
+      <p>Ei käyttäjää? <span @click="showLogin = false">Rekisteröidy</span></p>
     </div>
     <div v-else>
-      <h2>Sign up</h2>
+      <h2>Rekisteröidy käyttäjäksi</h2>
       <SignupForm @signup="enterChat" />
-      <p>Already registered? <span @click="showLogin = true">Login</span> instead</p>
+      <p>Jo rekisteröitynyt? <span @click="showLogin = true">Kirjaudu sisään</span></p>
     </div>
   </div>
 </template>

@@ -24,7 +24,8 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/auth',
     name: 'Auth',
-    component: Welcome
+    component: Welcome,
+    beforeEnter: requireNoAuth
   },
   {
     path: '/',

@@ -40,6 +40,7 @@ export default defineComponent({
   .welcome {
     text-align: center;
     padding: 20px 0;
+    overflow: auto;
   }
   /* form styles */
   .welcome form {

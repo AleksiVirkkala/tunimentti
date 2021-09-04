@@ -12,13 +12,12 @@
     </q-header>
     <q-footer bordered class="bg-white text-primary">
       <q-tabs
-        v-model="tab"
         inline-label
         class="bg-primary text-white shadow-2"
       >
-        <q-route-tab to="/auction" label="Auction" icon="mail" exact />
-        <q-tab name="alarms" icon="alarm" label="Alarms" />
-        <q-tab name="movies" icon="movie" label="Movies" />
+        <q-route-tab to="/details" label="Tiedot" icon="gavel" exact />
+        <q-route-tab to="/auction" label="Tarjoukset" icon="gavel" exact />
+        <q-route-tab to="/leaderboards" icon="leaderboard" label="Tilastot" exact />
       </q-tabs>
     </q-footer>
     <q-page-container>
@@ -29,12 +28,7 @@
 
 <script>
 import { defineComponent } from 'vue'
-import { ref } from '@vue/reactivity'
 
 export default defineComponent({
-  setup() {
-    const tab = ref('mails')
-    return { tab }
-  },
 })
 </script>

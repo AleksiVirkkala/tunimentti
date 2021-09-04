@@ -1,11 +1,17 @@
 <template>
   <form>
-    <textarea
+    <q-input
       v-model="message"
+      type="textarea"
+      standout
       :disabled="!isLoggedIn"
       :placeholder="isLoggedIn ? 'Kirjoita tarjouksesi ja paina enteriä... ja pysytääs asiallisina jookos:)' : 'Kirjaudu sisään jättääksesi tarjouksia'"
       @keypress.enter.prevent="handleSubmit"
-    />
+    >
+      <template #after>
+        <q-btn round dense flat icon="send" @click="handleSubmit" />
+      </template>
+    </q-input>
     <div class="error">{{ error }}</div>
   </form>
 </template>
@@ -41,20 +47,3 @@ export default defineComponent({
   },
 })
 </script>
-
-<style scoped>
-  form {
-    margin: 10px;
-  }
-  textarea {
-    width: 100%;
-    max-width: 100%;
-    margin-bottom: 6px;
-    padding: 10px;
-    box-sizing: border-box;
-    border: 0;
-    border-radius: 20px;
-    font-family: inherit;
-    outline: none;
-  }
-</style>

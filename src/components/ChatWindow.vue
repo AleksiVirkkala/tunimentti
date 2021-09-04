@@ -1,18 +1,32 @@
 <template>
-  <div class="chat-window">
+  <div class="relative-position">
     <div v-if="error">{{ error }}</div>
-    <div v-if="formattedDocuments" ref="messages" class="messages">
-      <div v-for="doc in formattedDocuments" :key="doc.id" class="single">
-        <span class="created-at">{{ doc.createdAt }}</span>
-        <span class="name">{{ doc.name }}</span>
-        <span class="message">{{ doc.message }}</span>
-      </div>
+    <div v-if="formattedDocuments">
+      <q-scroll-area ref="scrollArea" class="absolute-full">
+        <q-chat-message
+          v-for="doc in formattedDocuments"
+          :key="doc.id"
+          :name="doc.name"
+          :text="[ doc.message ]"
+          avatar="https://cdn.quasar.dev/img/avatar3.jpg"
+          :stamp="doc.createdAt"
+          :sent="false"
+          text-color="white"
+          bg-color="primary"
+        >
+          <template #avatar>
+            <span class="q-mr-sm text-h4">
+              ❤️
+            </span>
+          </template>
+        </q-chat-message>
+      </q-scroll-area>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import type { Ref } from 'vue'
+import { Ref, watch } from 'vue'
 import { ref, computed, defineComponent, onUpdated } from 'vue'
 import getCollection from '@/composables/getCollection'
 import { formatDistanceToNow } from 'date-fns'
@@ -27,20 +41,32 @@ export default defineComponent({
     })) : null)
 
     // Auto-scroll to bottom of messages
-    const messages: Ref<any> = ref(null)
+    const scrollArea: Ref<any> = ref(null)
 
+    const scrollToBottom = () => {
+      if (scrollArea.value) {
+        (window as any).vittu = scrollArea.value
+        scrollArea.value.setScrollPercentage('vertical', 1, 300)
+        console.log('vittu')
+      }
+    }
+
+    watch(() => formattedDocuments.value?.length, () => {
+      scrollToBottom()
+    })
     onUpdated(() => {
-      if (messages.value)
-        messages.value.scrollTop = messages.value?.scrollHeight
+      scrollToBottom()
     })
 
-    return { error, documents, formattedDocuments, messages }
+    setTimeout(scrollToBottom, 200)
+
+    return { error, documents, formattedDocuments, scrollArea, scrollToBottom }
   },
 })
 </script>
 
 <style scoped>
-  .chat-window {
+  /* .chat-window {
     background: #fafafa;
     padding: 30px 20px;
   }
@@ -57,8 +83,8 @@ export default defineComponent({
     font-weight: bold;
     margin-right: 6px;
   }
-  .messages {
+  .scrollArea {
     max-height: 400px;
     overflow: auto;
-  }
+  } */
 </style>

@@ -40,9 +40,9 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.no-login-button {
+/* .no-login-button {
   background: none;
   color: #5200a3;
   padding-right: 0;
-}
+} */
 </style>

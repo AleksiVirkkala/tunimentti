@@ -71,10 +71,4 @@ export default defineComponent({
     transform-origin: center;
     animation: bigtuni 2s;
   }
-
-  @keyframes bigtuni {
-  0%   { transform: scale(1.4); opacity: 0; }
-  100% { transform: scale(1); opacity: 0.14; }
-}
-
 </style>

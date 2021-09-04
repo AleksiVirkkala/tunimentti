@@ -1,10 +1,10 @@
 <template>
-  <nav v-if="user">
+  <nav v-if="user" class="row justify-between items-center">
     <div>
-      <p>Moi {{ user.displayName }}!</p>
-      <p class="email">Alla näet tarjoukset livenä</p>
+      <p class="text-subtitle1 no-margin">Moi {{ user.displayName }}!</p>
+      <p class="text-caption text-weight-thin no-margin">Alla näet tarjoukset livenä</p>
     </div>
-    <button @click="logOut">Kirjaudu ulos</button>
+    <q-btn @click="logOut">Kirjaudu ulos</q-btn>
   </nav>
   <nav v-else>
     <div>
@@ -43,22 +43,3 @@ export default defineComponent({
   },
 })
 </script>
-
-<style>
-  nav {
-    padding: 20px;
-    border-bottom: 1px solid #eee;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  nav p {
-    margin: 2px auto;
-    font-size: 16px;
-    color: #444;
-  }
-  nav p.email {
-    font-size: 14px;
-    color: #999;
-  }
-</style>

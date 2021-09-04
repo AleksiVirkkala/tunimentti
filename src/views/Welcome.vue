@@ -37,13 +37,13 @@ export default defineComponent({
 </script>
 
 <style>
-  .welcome {
+  /* .welcome {
     text-align: center;
     padding: 20px 0;
     overflow: auto;
-  }
+  } */
   /* form styles */
-  .welcome form {
+  /* .welcome form {
     width: 300px;
     margin: 20px auto;
   }
@@ -67,5 +67,5 @@ export default defineComponent({
   }
   .welcome button {
     margin: 20px auto;
-  }
+  } */
 </style>

@@ -61,9 +61,11 @@ export default defineComponent({
     const scrollArea: Ref<any> = ref(null)
 
     const scrollToBottom = () => {
-      if (scrollArea.value) {
-        scrollArea.value.setScrollPercentage('vertical', 1, 300)
-      }
+      setTimeout(() => {
+        if (scrollArea.value) {
+          scrollArea.value.setScrollPercentage('vertical', 1, 300)
+        }
+      }, 700)
     }
 
     watch(() => formattedDocuments.value?.length, () => {

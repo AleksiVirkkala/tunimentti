@@ -6,6 +6,8 @@
     <q-card>
       <BestOffer />
     </q-card> -->
+    <BestOffer />
+    <q-separator />
     <Navbar />
     <ChatWindow class="col-grow" />
     <NewChatForm />
@@ -16,7 +18,7 @@
 import { defineComponent, watch } from 'vue'
 import { useRouter } from 'vue-router'
 // import TunimenttiInfo from '@/components/TunimenttiInfo.vue'
-// import BestOffer from '@/components/BestOffer.vue'
+import BestOffer from '@/components/BestOffer.vue'
 import Navbar from '@/components/Navbar.vue'
 import NewChatForm from '@/components/NewChatForm.vue'
 import ChatWindow from '@/components/ChatWindow.vue'
@@ -24,7 +26,7 @@ import getUser from '@/composables/getUser'
 
 export default defineComponent({
   name: 'Auction',
-  components: { /* TunimenttiInfo, BestOffer, */ Navbar, NewChatForm, ChatWindow },
+  components: { /* TunimenttiInfo, BestOffer, */ BestOffer, Navbar, NewChatForm, ChatWindow },
 
   setup() {
     const { user } = getUser()

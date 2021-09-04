@@ -3,6 +3,7 @@
     <q-input
       v-model="message"
       type="textarea"
+      input-style="height: 70px;"
       filled
       :disable="!isLoggedIn"
       :placeholder="isLoggedIn ? 'Kirjoita tarjouksesi ja paina enteriä... ja pysytääs asiallisina jookos:)' : 'Kirjaudu sisään jättääksesi tarjouksia'"

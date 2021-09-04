@@ -1,7 +1,9 @@
 <template>
-  <div class="absolute-full row no-wrap items-center q-mx-md justify-center content-center">
-    <div class="fire">
-      🔥
+  <div class="row no-wrap items-center q-mx-md justify-center content-center relative-position">
+    <div class="overflow-hidden absolute-full row items-center justify-center">
+      <div class="fire">
+        🔥
+      </div>
     </div>
     <div class="chat-window">
       <div>
@@ -10,9 +12,6 @@
       <div class="price-title">
         <strong>{{ bestOffer }}</strong>
       </div>
-    </div>
-    <div class="fire">
-      🔥
     </div>
   </div>
 </template>
@@ -33,17 +32,26 @@ export default defineComponent({
 </script>
 
 <style scoped>
+
   .fire {
-    font-size: 40px;
+    font-size: 100px;
+    opacity: 0.3;
+    left: 50%;
+    top: 50%;
+  }
+  @media (max-width: 600px) {
+    .fire {
+      font-size: 200px;
+    }
   }
   .chat-window {
-    padding: 30px 20px;
+    padding: 20px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
   .price-title {
-    font-size: 30px;
+    font-size: 20px;
     text-align: center;
   }
 </style>

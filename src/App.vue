@@ -36,7 +36,7 @@
       >
         <q-route-tab to="/details" label="Tiedot" icon="menu_book" exact />
         <q-route-tab to="/auction" label="Tarjoukset" icon="gavel" exact />
-        <q-route-tab to="/leaderboards" icon="leaderboard" label="Tilastot" exact />
+        <!-- <q-route-tab to="/leaderboards" icon="leaderboard" label="Tilastot" exact /> -->
       </q-tabs>
     </q-footer>
     <q-page-container>

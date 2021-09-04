@@ -1,11 +1,30 @@
 <template>
-  <form @submit.prevent="handleSubmit">
-    <input v-model="email" required placeholder="Chatti nimi">
-    <input v-model="password" type="password" required placeholder="salasana">
+  <q-form
+    class="q-gutter-md"
+    @submit="handleSubmit"
+  >
+    <q-input
+      v-model="email"
+      filled
+      label="Chatti nimi *"
+      hint="Name and surname"
+      lazy-rules
+      :rules="[ val => val && val.length > 0 || 'Please type something' ]"
+    />
+
+    <q-input
+      v-model="password"
+      filled
+      type="password"
+      label="salasana *"
+      lazy-rules
+    />
     <div class="error">{{ error }}</div>
-    <button>Kirjaudu</button>
-    <button class="no-login-button" @click="goToAuction">Jatka anonyyminä</button>
-  </form>
+
+    <div>
+      <q-btn label="Kirjaudu" type="submit" color="primary" />
+    </div>
+  </q-form>
 </template>
 
 <script lang="ts">

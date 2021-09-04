@@ -1,5 +1,5 @@
 <template>
-  <div class="row">
+  <div class="absolute-full row no-wrap items-center q-mx-md justify-center content-center">
     <div class="fire">
       🔥
     </div>
@@ -33,12 +33,6 @@ export default defineComponent({
 </script>
 
 <style scoped>
-  .row {
-    display: flex;
-    margin: 20px;
-    justify-content: center;
-    align-items: center;
-  }
   .fire {
     font-size: 40px;
   }

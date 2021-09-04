@@ -3,13 +3,13 @@
     <q-input
       v-model="message"
       type="textarea"
-      standout
-      :disabled="!isLoggedIn"
+      filled
+      :disable="!isLoggedIn"
       :placeholder="isLoggedIn ? 'Kirjoita tarjouksesi ja paina enteriä... ja pysytääs asiallisina jookos:)' : 'Kirjaudu sisään jättääksesi tarjouksia'"
       @keypress.enter.prevent="handleSubmit"
     >
       <template #after>
-        <q-btn round dense flat icon="send" @click="handleSubmit" />
+        <q-btn :disable="!isLoggedIn" round dense flat icon="send" @click="handleSubmit" />
       </template>
     </q-input>
     <div class="error">{{ error }}</div>

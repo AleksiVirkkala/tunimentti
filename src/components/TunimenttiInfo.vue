@@ -1,10 +1,10 @@
 <template>
-  <div class="col">
+  <div class="coll fit">
     <div class="image">
       <img class="tunimentti" src="/img/tunimentti.png">
     </div>
-    <h1 class="title">Tunimentin huutokauppa</h1>
-    <div class="description">
+    <h3 class="title">Tunimentin huutokauppa</h3>
+    <div>
       <p>
         Korkeakoulutettujenyhteisö on päätynyt huutokauppaamaan tunimentin päästösyistä. Tarjoukset Tunimentista otetaan vastaan sähköpostilla osoitteeseen <strong>tarjoukset@tunimentti.com</strong> tai alta löytyvään julkiseen chattiin.
       </p>
@@ -46,7 +46,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
-  .col {
+  .coll {
     padding: 30px;
     display: flex;
     flex-direction: column;

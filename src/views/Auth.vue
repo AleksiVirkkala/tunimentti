@@ -1,16 +1,21 @@
 <template>
-  <div class="welcome container">
-    <div v-if="showLogin">
-      <h2>Kirjaudu sisään</h2>
-      <LoginForm @login="enterChat" />
-      <p>Ei käyttäjää? <span @click="showLogin = false">Rekisteröidy</span></p>
-    </div>
-    <div v-else>
-      <h2>Rekisteröidy käyttäjäksi</h2>
-      <SignupForm @signup="enterChat" />
-      <p>Jo rekisteröitynyt? <span @click="showLogin = true">Kirjaudu sisään</span></p>
-    </div>
-  </div>
+  <q-card bordered>
+    <q-card-section>
+      <div class="text-h6">{{ showLogin ? 'Kirjaudu sisään' : 'Rekisteröidy' }}</div>
+    </q-card-section>
+
+
+    <q-card-section>
+      <div v-if="showLogin">
+        <LoginForm @login="enterChat" />
+        <p class="q-mt-md">Ei käyttäjää? <span class="linkki" @click="showLogin = false">Rekisteröidy</span></p>
+      </div>
+      <div v-else>
+        <SignupForm @signup="enterChat" />
+        <p class="q-mt-md">Jo rekisteröitynyt? <span class="linkki" @click="showLogin = true">Kirjaudu sisään</span></p>
+      </div>
+    </q-card-section>
+  </q-card>
 </template>
 
 <script lang="ts">
@@ -23,11 +28,12 @@ export default defineComponent({
   name: 'Auth',
   components: { SignupForm, LoginForm },
 
-  setup() {
+  setup(props, context) {
     const showLogin = ref(true)
     const router = useRouter()
 
     const enterChat = () => {
+      context.emit('auth-completed')
       router.push({ name: 'Auction' })
     }
 
@@ -68,4 +74,9 @@ export default defineComponent({
   .welcome button {
     margin: 20px auto;
   } */
+  .linkki {
+    font-weight: bold;
+    text-decoration: underline;
+    cursor: pointer;
+  }
 </style>

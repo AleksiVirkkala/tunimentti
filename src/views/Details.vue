@@ -1,11 +1,8 @@
 <template>
-  <q-page padding class="column q-gutter-md">
-    <q-card>
+  <q-page padding>
+    <q-scroll-area class="absolute-full">
       <TunimenttiInfo />
-    </q-card>
-    <q-card>
-      <BestOffer />
-    </q-card>
+    </q-scroll-area>
   </q-page>
 </template>
 
@@ -13,12 +10,11 @@
 import { defineComponent, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import TunimenttiInfo from '@/components/TunimenttiInfo.vue'
-import BestOffer from '@/components/BestOffer.vue'
 import getUser from '@/composables/getUser'
 
 export default defineComponent({
   name: 'Auction',
-  components: { TunimenttiInfo, BestOffer },
+  components: { TunimenttiInfo },
 
   setup() {
     const { user } = getUser()

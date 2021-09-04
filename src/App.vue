@@ -8,6 +8,25 @@
         <q-toolbar-title>
           Tunimentin huutokauppa
         </q-toolbar-title>
+        <q-btn v-if="user" flat round dense icon="more_vert">
+          <q-menu>
+            <q-list bordered padding class="rounded-borders text-primary">
+              <q-item
+                v-ripple
+                clickable
+                active-class="my-menu-link"
+                @click="logOut"
+              >
+                <q-item-section avatar>
+                  <q-icon name="logout" />
+                </q-item-section>
+
+                <q-item-section>Kirjaudu ulos</q-item-section>
+              </q-item>
+            </q-list>
+          </q-menu>
+        </q-btn>
+        <q-btn v-else flat round dense icon="person" @click="showAuthDialog = true" />
       </q-toolbar>
     </q-header>
     <q-footer bordered class="bg-white text-primary">
@@ -15,20 +34,49 @@
         inline-label
         class="bg-primary text-white shadow-2"
       >
-        <q-route-tab to="/details" label="Tiedot" icon="gavel" exact />
+        <q-route-tab to="/details" label="Tiedot" icon="menu_book" exact />
         <q-route-tab to="/auction" label="Tarjoukset" icon="gavel" exact />
         <q-route-tab to="/leaderboards" icon="leaderboard" label="Tilastot" exact />
       </q-tabs>
     </q-footer>
     <q-page-container>
-      <router-view />
+      <keep-alive>
+        <transition
+          appear
+          enter-active-class="animated fadeIn"
+          leave-active-class="animated fadeOut"
+        >
+          <router-view />
+        </transition>
+      </keep-alive>
     </q-page-container>
   </q-layout>
+  <q-dialog v-model="showAuthDialog">
+    <q-card style="width: 400px;">
+      <Auth @auth-completed="showAuthDialog = false" />
+    </q-card>
+  </q-dialog>
 </template>
 
 <script>
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
+import Auth from '@/views/Auth.vue'
+import getUser from '@/composables/getUser'
+import useLogout from '@/composables/useLogout'
 
 export default defineComponent({
+  components: { Auth },
+  setup() {
+    const { user } = getUser()
+    const { logout, error } = useLogout()
+    const logOut = async () => {
+      await logout()
+      if (!error.value) {
+        console.log('User logged out')
+      }
+    }
+    const showAuthDialog = ref(false)
+    return { user, logOut, showAuthDialog }
+  }
 })
 </script>

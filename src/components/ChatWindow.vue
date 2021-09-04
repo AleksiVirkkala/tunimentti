@@ -10,12 +10,12 @@
           :text="doc.messages"
           avatar="https://cdn.quasar.dev/img/avatar3.jpg"
           :stamp="doc.createdAt"
-          :sent="false"
+          :sent="doc.name === userName"
           text-color="white"
-          bg-color="primary"
+          :bg-color="doc.name === userName ? 'blue' : doc.name === 'Korkeakoulutettujenyhteisö' ? 'orange' : 'primary'"
         >
           <template #avatar>
-            <span class="q-mr-sm text-h5">
+            <span class="q-mx-sm text-h5">
               {{ doc.emoji }}
             </span>
           </template>
@@ -28,6 +28,7 @@
 <script lang="ts">
 import { Ref, watch } from 'vue'
 import { ref, computed, defineComponent, onUpdated } from 'vue'
+import getUser from '@/composables/getUser'
 import getCollection from '@/composables/getCollection'
 import { formatDistanceToNow } from 'date-fns'
 import nameEmojis from '../assets/nameEmojis'
@@ -36,6 +37,8 @@ export default defineComponent({
   name: 'ChatWindow',
   setup() {
     const { error, documents } = getCollection('messages')
+    const { user } = getUser()
+    const userName = computed(() => user.value?.displayName)
 
     const formattedDocuments = computed(() => documents.value
       ? documents.value.map(doc => ({
@@ -72,31 +75,7 @@ export default defineComponent({
 
     setTimeout(scrollToBottom, 200)
 
-    return { error, documents, formattedDocuments, scrollArea, scrollToBottom }
+    return { error, documents, formattedDocuments, scrollArea, scrollToBottom, userName }
   },
 })
 </script>
-
-<style scoped>
-  /* .chat-window {
-    background: #fafafa;
-    padding: 30px 20px;
-  }
-  .single {
-    margin: 18px 0;
-  }
-  .created-at {
-    display: block;
-    color: #999;
-    font-size: 12px;
-    margin-bottom: 4px;
-  }
-  .name {
-    font-weight: bold;
-    margin-right: 6px;
-  }
-  .scrollArea {
-    max-height: 400px;
-    overflow: auto;
-  } */
-</style>

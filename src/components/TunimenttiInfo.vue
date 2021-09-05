@@ -24,7 +24,7 @@
         Tiedämme Tunimentin olevan suuri nähtävyys, mutta vaikka Tunimentti on kaupan, korkeakoulutettujenyhteisö pyytää kaikkia kohtelemaan sitä arvokkaasti ja annetaan sen olla rauhassa sen nykyisessä kotipaikassa.
       </p>
       <p>
-        Otamme tarjouksia vastaan <strong>8.9.2021 23:59</strong> saakka.
+        Otamme tarjouksia vastaan <strong>7.9.2021 15:00</strong> saakka.
       </p>
       <p>
         Tarjousajan päätyttyä Tampereen korkeakouluyhteisön täytyy hyväksyä hinta ja antaa lupa myynnille. Pidämme oikeudet olla myymättä tuotetta jos tarjous ei ole riittävä.

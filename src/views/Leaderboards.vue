@@ -1,7 +1,7 @@
 <template>
   <q-page padding>
     <q-scroll-area class="absolute-full">
-      <div class="row items-center justify-center q-ma-lg">
+      <div class="row items-center justify-center q-pa-md bg-primary">
         <TimeLeft />
       </div>
       <q-separator />

@@ -1,20 +1,28 @@
 <template>
   <div class="column items-center">
-    <div class="text-subtitle1">
+    <div class="text-h6 text-white">
       Aikaa Jäljellä
     </div>
-    <div class="text-h4">
-      11:20
-    </div>
+    <FlipDown class="my-timer q-my-md" :end-date="endTime" />
   </div>
 </template>
 
 <script>
-export default {
+import { defineComponent, watchEffect, onMounted } from 'vue'
+import FlipDown from 'vue-flip-down'
 
-}
+export default defineComponent({
+  components: { FlipDown },
+  setup() {
+    const endTime = new Date('2021', '8', '7', '15')
+    console.log(endTime)
+    return { endTime }
+  }
+})
 </script>
 
-<style lang="scss" scoped>
-
+<style scoped>
+.my-timer {
+  transform: scale(1.5);
+}
 </style>

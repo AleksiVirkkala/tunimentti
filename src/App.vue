@@ -28,6 +28,9 @@
         </q-btn>
         <q-btn v-else flat round dense icon="person" @click="showAuthDialog = true" />
       </q-toolbar>
+      <div class="row items-center justify-center q-pb-md">
+        <TimeLeft />
+      </div>
     </q-header>
     <q-footer bordered class="bg-white text-primary">
       <q-tabs
@@ -63,11 +66,12 @@
 <script>
 import { defineComponent, ref } from 'vue'
 import Auth from '@/views/Auth.vue'
+import TimeLeft from '@/components/TimeLeft.vue'
 import getUser from '@/composables/getUser'
 import useLogout from '@/composables/useLogout'
 
 export default defineComponent({
-  components: { Auth },
+  components: { Auth, TimeLeft },
   setup() {
     const { user } = getUser()
     const { logout, error } = useLogout()

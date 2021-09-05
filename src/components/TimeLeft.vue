@@ -1,9 +1,9 @@
 <template>
   <div class="column items-center">
-    <div class="text-h6 text-white">
+    <div class="text-caption text-white">
       Aikaa Jäljellä
     </div>
-    <FlipDown class="my-timer q-my-md" :end-date="endTime" />
+    <FlipDown class="my-timer" :end-date="endTime" />
   </div>
 </template>
 
@@ -22,7 +22,5 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.my-timer {
-  transform: scale(1.5);
-}
+
 </style>

@@ -1,9 +1,6 @@
 <template>
   <q-page padding>
     <q-scroll-area class="absolute-full">
-      <div class="row items-center justify-center q-pa-md bg-primary">
-        <TimeLeft />
-      </div>
       <q-separator />
       <h4 class="q-mt-lg q-ml-lg">Top-3 äänestetyintä tarjousta</h4>
       <template v-if="top10">
@@ -41,13 +38,12 @@ import { useRouter } from 'vue-router'
 import { formatDistanceToNow } from 'date-fns'
 import nameEmojis from '../assets/nameEmojis'
 import LeaderBoardsItem from '@/components/LeaderBoardsItem.vue'
-import TimeLeft from '@/components/TimeLeft.vue'
 import getUser from '@/composables/getUser'
 import getCollection from '@/composables/getCollection'
 
 export default defineComponent({
   name: 'Leaderboards',
-  components: { LeaderBoardsItem, TimeLeft },
+  components: { LeaderBoardsItem },
 
   setup() {
     const { error, documents } = getCollection('messages')

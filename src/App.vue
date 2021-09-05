@@ -40,15 +40,17 @@
       </q-tabs>
     </q-footer>
     <q-page-container>
-      <keep-alive>
+      <router-view v-slot="{ Component }">
         <transition
           appear
-          enter-active-class="animated fadeIn"
-          leave-active-class="animated fadeOut"
+          mode="out-in"
+          name="fade"
         >
-          <router-view />
+          <keep-alive>
+            <component :is="Component" />
+          </keep-alive>
         </transition>
-      </keep-alive>
+      </router-view>
     </q-page-container>
   </q-layout>
   <q-dialog v-model="showAuthDialog">
@@ -80,3 +82,12 @@ export default defineComponent({
   }
 })
 </script>
+
+<style scoped>
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+</style>

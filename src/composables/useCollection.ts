@@ -22,7 +22,19 @@ const useCollection = (collection: string) => {
     }
   }
 
-  return { error, addDoc }
+  const getDocUpdateRef = async (docID: string) => {
+    error.value = null
+
+    try {
+      return await projectFirestore.collection(collection).doc(docID)
+    }
+    catch (err) {
+      console.log(err.message)
+      error.value = 'could not send the message'
+    }
+  }
+
+  return { error, addDoc, getDocUpdateRef }
 }
 
 export default useCollection

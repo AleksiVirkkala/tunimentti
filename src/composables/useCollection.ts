@@ -7,7 +7,8 @@ const useCollection = (collection: string) => {
   interface Chat {
     name: string,
     message: string,
-    createdAt: any
+    createdAt: any,
+    votes?: Record<string, 'up'|'down'>
   }
 
   const addDoc = async (doc: Chat) => {
